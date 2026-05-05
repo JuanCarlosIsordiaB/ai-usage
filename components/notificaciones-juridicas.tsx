@@ -170,27 +170,22 @@ export function NotificacionesJuridicas() {
   return (
     <div className="flex flex-col h-full overflow-hidden">
       {/* Header */}
-      <div className="p-6 border-b border-border bg-background shrink-0">
-        <div className="flex items-center justify-between">
+      <div className="px-6 border-b border-border bg-background shrink-0 h-16 flex items-center">
+        <div className="flex items-center justify-between w-full">
           <div className="flex items-center gap-3">
-            <div className="relative">
-              <Bell className="w-7 h-7 text-secondary" />
+            <div className="w-8 h-8 rounded-lg bg-[#FCE7EB] flex items-center justify-center relative">
+              <Bell className="w-4 h-4 text-[#E11D48]" />
               {totalUnread > 0 && (
-                <span className="absolute -top-1.5 -right-1.5 w-4 h-4 bg-destructive text-destructive-foreground text-[10px] font-bold rounded-full flex items-center justify-center">
+                <span className="absolute -top-1 -right-1 w-4 h-4 bg-[#E11D48] text-white text-[9px] font-bold rounded-full flex items-center justify-center">
                   {totalUnread}
                 </span>
               )}
             </div>
-            <div>
-              <h1 className="text-2xl font-bold text-foreground">Notificaciones Jurídicas</h1>
-              <p className="text-sm text-muted-foreground">
-                Tribunal Federal y Diario Oficial de la Federación
-              </p>
-            </div>
+            <h1 className="text-[22px] font-semibold text-foreground leading-none">Notificaciones jurídicas</h1>
           </div>
-          <Button variant="outline" className="gap-2" onClick={markAllAsRead}>
+          <Button variant="outline" className="gap-2 h-9 text-[13px]" onClick={markAllAsRead}>
             <CheckCheck className="w-4 h-4" />
-            Marcar todos como leídos
+            Marcar como leídos
           </Button>
         </div>
 
@@ -297,7 +292,7 @@ function NotificationCard({
   return (
     <Card
       className={`transition-all ${
-        notification.read ? "opacity-60" : "border-l-4 border-l-primary shadow-sm"
+        notification.read ? "opacity-60" : "border-l-4 border-l-primary"
       }`}
     >
       <CardHeader className="pb-2 pt-4 px-5">

@@ -390,7 +390,7 @@ function NuevaFacturaModal({ open, onClose }: NuevaFacturaModalProps) {
           <div className="flex justify-end gap-2 pt-1">
             <Button variant="outline" onClick={handleClose}>Cancelar</Button>
             <Button
-              className="bg-sidebar-primary text-sidebar-primary-foreground hover:bg-sidebar-primary/90"
+              className="bg-primary text-primary-foreground hover:bg-primary/90"
               onClick={handleClose}
             >
               Crear factura
@@ -441,8 +441,8 @@ function InvoiceDetail({ invoice, onBack }: InvoiceDetailProps) {
           <div className="flex items-start justify-between">
             <div>
               <div className="flex items-center gap-3 mb-1">
-                <div className="w-9 h-9 bg-sidebar-primary rounded-lg flex items-center justify-center">
-                  <FileText className="w-5 h-5 text-sidebar-primary-foreground" />
+                <div className="w-9 h-9 bg-[#EEF0FF] rounded-lg flex items-center justify-center">
+                  <FileText className="w-5 h-5 text-primary" />
                 </div>
                 <div>
                   <h2 className="text-xl font-bold text-foreground">LegalPro</h2>
@@ -545,18 +545,13 @@ export function Facturacion() {
       <div className="p-6">
         {/* Page header */}
         <div className="flex items-center justify-between mb-6">
-          <div>
-            <h1 className="text-2xl font-bold text-foreground">Facturación</h1>
-            <p className="text-sm text-muted-foreground mt-0.5">
-              Gestiona y da seguimiento a tus facturas
-            </p>
-          </div>
+          <h1 className="text-[22px] font-semibold text-foreground leading-none">Facturación</h1>
           <Button
-            className="gap-2 bg-sidebar-primary text-sidebar-primary-foreground hover:bg-sidebar-primary/90"
+            className="gap-2 bg-primary text-primary-foreground hover:bg-primary/90"
             onClick={() => setModalOpen(true)}
           >
             <Plus className="w-4 h-4" />
-            Nueva Factura
+            Nueva factura
           </Button>
         </div>
 

@@ -1,11 +1,19 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useRef, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
 import { ScrollArea } from "@/components/ui/scroll-area"
-import { Plus, Search, Smile, Paperclip, Send, Hash, ChevronDown } from "lucide-react"
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogFooter,
+} from "@/components/ui/dialog"
+import { Label } from "@/components/ui/label"
+import { Plus, Search, Smile, Paperclip, Send, Hash, ChevronDown, MessageSquare, Users } from "lucide-react"
 
 const conversations = [
   {
@@ -60,7 +68,9 @@ const conversations = [
   },
 ]
 
-const messagesByConversation: Record<number, { id: number; sender: string; initials: string; content: string; time: string; sent: boolean }[]> = {
+type ChatMessage = { id: number; sender: string; initials: string; content: string; time: string; sent: boolean }
+
+const INITIAL_MESSAGES: Record<number, ChatMessage[]> = {
   1: [
     { id: 1, sender: "Lic. García Morales", initials: "GM", content: "Buenos días, ¿ya tuviste oportunidad de revisar el expediente 2847-B?", time: "10:15", sent: false },
     { id: 2, sender: "Yo", initials: "YO", content: "Sí, lo estuve revisando ayer. Hay algunos puntos que necesitamos discutir.", time: "10:18", sent: true },
@@ -94,17 +104,41 @@ export function ChatInterno() {
   const [activeId, setActiveId] = useState(1)
   const [searchQuery, setSearchQuery] = useState("")
   const [message, setMessage] = useState("")
+  const [allMessages, setAllMessages] = useState(INITIAL_MESSAGES)
+  const [newConvOpen, setNewConvOpen] = useState(false)
+  const [newConvType, setNewConvType] = useState<"dm" | "group" | null>(null)
+  const [newConvName, setNewConvName] = useState("")
+  const messagesEndRef = useRef<HTMLDivElement>(null)
 
   const activeConv = conversations.find(c => c.id === activeId)!
-  const messages = messagesByConversation[activeId] ?? []
+  const messages = allMessages[activeId] ?? []
   const filtered = conversations.filter(c =>
     c.name.toLowerCase().includes(searchQuery.toLowerCase())
   )
   const dms = filtered.filter(c => c.type === "dm")
   const groups = filtered.filter(c => c.type === "group")
 
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
+  }, [messages])
+
   const handleSend = () => {
-    if (message.trim()) setMessage("")
+    if (!message.trim()) return
+    const now = new Date()
+    const time = now.toLocaleTimeString("es-MX", { hour: "2-digit", minute: "2-digit" })
+    const newMsg: ChatMessage = {
+      id: Date.now(),
+      sender: "Yo",
+      initials: "YO",
+      content: message.trim(),
+      time,
+      sent: true,
+    }
+    setAllMessages(prev => ({
+      ...prev,
+      [activeId]: [...(prev[activeId] ?? []), newMsg],
+    }))
+    setMessage("")
   }
 
   return (
@@ -115,7 +149,13 @@ export function ChatInterno() {
         <div className="p-4 border-b border-border space-y-3">
           <div className="flex items-center justify-between">
             <h2 className="text-base font-semibold text-foreground">Mensajes</h2>
-            <Button size="icon" variant="outline" className="h-8 w-8 border-border">
+            <Button
+              size="icon"
+              variant="outline"
+              className="h-8 w-8 border-border"
+              onClick={() => { setNewConvType(null); setNewConvName(""); setNewConvOpen(true) }}
+              title="Nueva conversación"
+            >
               <Plus className="w-4 h-4" />
             </Button>
           </div>
@@ -231,6 +271,7 @@ export function ChatInterno() {
                 </div>
               </div>
             ))}
+            <div ref={messagesEndRef} />
           </div>
         </ScrollArea>
 
@@ -269,6 +310,79 @@ export function ChatInterno() {
           </div>
         </div>
       </div>
+
+      {/* ── New conversation modal ── */}
+      <Dialog open={newConvOpen} onOpenChange={setNewConvOpen}>
+        <DialogContent className="sm:max-w-[420px]">
+          <DialogHeader>
+            <DialogTitle className="flex items-center gap-2">
+              <Plus className="w-4 h-4 text-primary" />
+              Nueva conversación
+            </DialogTitle>
+          </DialogHeader>
+
+          {!newConvType ? (
+            <div className="flex flex-col gap-3 py-2">
+              <button
+                onClick={() => setNewConvType("dm")}
+                className="flex items-center gap-4 p-4 border border-border rounded-xl hover:bg-muted transition-colors text-left"
+              >
+                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                  <MessageSquare className="w-5 h-5 text-primary" />
+                </div>
+                <div>
+                  <p className="font-semibold text-sm text-foreground">Mensaje directo</p>
+                  <p className="text-xs text-muted-foreground mt-0.5">Conversación privada con un miembro del despacho</p>
+                </div>
+              </button>
+              <button
+                onClick={() => setNewConvType("group")}
+                className="flex items-center gap-4 p-4 border border-border rounded-xl hover:bg-muted transition-colors text-left"
+              >
+                <div className="w-10 h-10 rounded-full bg-[#EEF0FF] flex items-center justify-center shrink-0">
+                  <Users className="w-5 h-5 text-primary" />
+                </div>
+                <div>
+                  <p className="font-semibold text-sm text-foreground">Canal grupal</p>
+                  <p className="text-xs text-muted-foreground mt-0.5">Canal temático para un equipo o caso</p>
+                </div>
+              </button>
+            </div>
+          ) : (
+            <div className="flex flex-col gap-4 py-2">
+              <button
+                onClick={() => setNewConvType(null)}
+                className="flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground -mt-1 w-fit"
+              >
+                ← Volver
+              </button>
+              <div className="space-y-1.5">
+                <Label htmlFor="new-conv-name">
+                  {newConvType === "dm" ? "Nombre del contacto" : "Nombre del canal"}
+                </Label>
+                <Input
+                  id="new-conv-name"
+                  placeholder={newConvType === "dm" ? "Ej. Lic. Pérez Morales" : "Ej. Caso García — Equipo"}
+                  value={newConvName}
+                  onChange={e => setNewConvName(e.target.value)}
+                  autoFocus
+                  onKeyDown={e => e.key === "Enter" && newConvName.trim() && setNewConvOpen(false)}
+                />
+              </div>
+              <DialogFooter>
+                <Button variant="outline" onClick={() => setNewConvOpen(false)}>Cancelar</Button>
+                <Button
+                  disabled={!newConvName.trim()}
+                  onClick={() => setNewConvOpen(false)}
+                  className="bg-primary text-primary-foreground hover:bg-primary/90"
+                >
+                  {newConvType === "dm" ? "Iniciar conversación" : "Crear canal"}
+                </Button>
+              </DialogFooter>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
     </div>
   )
 }

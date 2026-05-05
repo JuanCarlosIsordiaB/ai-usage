@@ -8,9 +8,9 @@ export function LegalNews() {
     <div className="max-w-4xl mx-auto p-6 space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-foreground flex items-center gap-2">
-            <Newspaper className="w-8 h-8 text-secondary" />
-            Noticias Jurídicas
+          <h1 className="text-[22px] font-semibold text-foreground flex items-center gap-2">
+            <Newspaper className="w-5 h-5 text-muted-foreground" />
+            Noticias jurídicas
           </h1>
           <p className="text-muted-foreground">Mantente actualizado con las últimas reformas y publicaciones del DOF</p>
         </div>

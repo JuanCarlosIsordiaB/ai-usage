@@ -178,30 +178,28 @@ export function DocumentosList({ onOpen }: DocumentosListProps) {
     <div className="flex flex-col h-full bg-background">
 
       {/* ── Page header ── */}
-      <header className="border-b border-border bg-card px-6 py-5 shadow-sm">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-4">
-            <div className="p-2.5 bg-primary rounded-lg">
-              <FileText className="w-5 h-5 text-primary-foreground" />
+      <header className="border-b border-border bg-background shrink-0">
+        {/* Top bar */}
+        <div className="px-6 h-16 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 bg-[#EEF0FF] rounded-lg flex items-center justify-center">
+              <FileText className="w-4 h-4 text-primary" />
             </div>
-            <div>
-              <h1 className="text-2xl font-bold text-foreground tracking-tight">Documentos</h1>
-              <p className="text-sm text-muted-foreground">Documentos colaborativos del despacho</p>
-            </div>
+            <h1 className="text-[22px] font-semibold text-foreground leading-none">Documentos</h1>
           </div>
-          <Button className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm gap-2">
+          <Button className="bg-primary text-primary-foreground hover:bg-primary/90 gap-2">
             <Plus className="w-4 h-4" />
-            Nuevo Documento
+            Nuevo documento
           </Button>
         </div>
 
-        {/* Stats row */}
-        <div className="flex items-center gap-8 mt-5 pt-4 border-t border-border">
+        {/* Summary counts */}
+        <div className="px-6 pb-3 flex items-center gap-8 border-t border-border pt-3">
           <StatCard value={String(total)} label="Total" />
-          <div className="w-px h-8 bg-border" />
-          <StatCard value={String(borradores)} label="Borradores" accent="text-gray-500" />
-          <StatCard value={String(revision)} label="En revisión" accent="text-amber-600" />
-          <StatCard value={String(finales)} label="Finales" accent="text-emerald-600" />
+          <div className="w-px h-6 bg-border" />
+          <StatCard value={String(borradores)} label="Borradores" accent="text-[#6B7280]" />
+          <StatCard value={String(revision)} label="En revisión" accent="text-[#F59E0B]" />
+          <StatCard value={String(finales)} label="Finales" accent="text-[#16A34A]" />
         </div>
       </header>
 

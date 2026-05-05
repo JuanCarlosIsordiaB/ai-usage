@@ -221,10 +221,10 @@ function EmptyState({ onUpload }: { onUpload: () => void }) {
           <rect x="22" y="26" width="26" height="3" rx="1.5" fill="white" />
           <rect x="22" y="36" width="20" height="3" rx="1.5" fill="white" />
           <rect x="22" y="46" width="22" height="3" rx="1.5" fill="white" />
-          <circle cx="68" cy="70" r="20" fill="#ffcc00" />
+          <circle cx="68" cy="70" r="20" fill="#5B5BFE" />
           <path
             d="M68 60v20M58 70h20"
-            stroke="#001f3f"
+            stroke="#ffffff"
             strokeWidth="3"
             strokeLinecap="round"
           />
@@ -319,7 +319,7 @@ function UploadModal({
             onClick={pickFile}
             className={`cursor-pointer select-none border-2 border-dashed rounded-xl p-8 text-center transition-all ${
               isDragging
-                ? "border-accent bg-accent/5 scale-[1.01]"
+                ? "border-primary bg-[#EEF0FF] scale-[1.01]"
                 : "border-border hover:border-primary/40 hover:bg-primary/[0.02]"
             }`}
           >
@@ -605,20 +605,15 @@ export function BaseDeDatos() {
   return (
     <div className="h-full flex flex-col overflow-hidden bg-background">
       {/* Page header */}
-      <div className="px-8 pt-8 pb-5 border-b border-border bg-background shrink-0">
-        <div className="flex items-start justify-between">
-          <div>
-            <div className="flex items-center gap-3 mb-1">
-              <div className="w-9 h-9 rounded-lg bg-primary flex items-center justify-center">
-                <Database className="w-4.5 h-4.5 text-primary-foreground" />
-              </div>
-              <h1 className="text-2xl font-bold text-foreground">
-                Base de Datos
-              </h1>
+      <div className="px-6 border-b border-border bg-background shrink-0 h-16 flex items-center">
+        <div className="flex items-center justify-between w-full">
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 rounded-lg bg-[#EEF0FF] flex items-center justify-center">
+              <Database className="w-4 h-4 text-primary" />
             </div>
-            <p className="text-sm text-muted-foreground ml-12">
-              Repositorio central de documentos legales del despacho
-            </p>
+            <h1 className="text-[22px] font-semibold text-foreground leading-none">
+              Base de datos
+            </h1>
           </div>
           <Button
             onClick={() => setUploadOpen(true)}

@@ -16,9 +16,9 @@ export function AIAssistant() {
   return (
     <div className="max-w-4xl mx-auto p-6 space-y-6">
       <div className="text-center space-y-2">
-        <h1 className="text-3xl font-bold text-foreground flex items-center justify-center gap-2">
-          <Bot className="w-8 h-8 text-secondary" />
-          Asistente IA Jurídica
+        <h1 className="text-[22px] font-semibold text-foreground flex items-center justify-center gap-2">
+          <Bot className="w-5 h-5 text-primary" />
+          Asistente IA jurídica
         </h1>
         <p className="text-muted-foreground">Potencia tu práctica legal con inteligencia artificial avanzada</p>
       </div>
@@ -166,7 +166,7 @@ export function AIAssistant() {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <Card>
                   <CardContent className="p-4 text-center">
-                    <FileText className="w-8 h-8 text-secondary mx-auto mb-2" />
+                    <FileText className="w-8 h-8 text-primary mx-auto mb-2" />
                     <p className="font-medium">Contratos</p>
                     <p className="text-sm text-muted-foreground">Análisis de cláusulas</p>
                   </CardContent>

@@ -4,76 +4,85 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Professional navy blue and gold legal color scheme */
-  --background: #ffffff; /* Clean white background */
-  --foreground: #001f3f; /* Navy blue text */
-  --card: #fefefe; /* Light gray card background */
-  --card-foreground: #374151; /* Charcoal text on cards */
-  --popover: #ffffff; /* White popover background */
-  --popover-foreground: #374151; /* Charcoal popover text */
-  --primary: #001f3f; /* Navy blue primary */
-  --primary-foreground: #ffffff; /* White text on primary */
-  --secondary: #374151; /* Charcoal secondary */
-  --secondary-foreground: #ffffff; /* White text on secondary */
-  --muted: #fefefe; /* Light muted background */
-  --muted-foreground: #374151; /* Charcoal muted text */
-  --accent: #ffcc00; /* Gold accent */
-  --accent-foreground: #001f3f; /* Navy text on accent */
-  --destructive: #dc2626; /* Red for warnings */
-  --destructive-foreground: #ffffff; /* White text on destructive */
-  --border: #e5e7eb; /* Light gray border */
-  --input: #ffffff; /* White input background */
-  --ring: rgba(0, 31, 63, 0.1); /* Navy ring shadow */
-  --chart-1: #ffcc00; /* Gold chart color */
-  --chart-2: #001f3f; /* Navy chart color */
-  --chart-3: #ff5733; /* Orange chart color */
-  --chart-4: #28a745; /* Green chart color */
-  --chart-5: #007bff; /* Blue chart color */
+  /* ── Neutrals ─────────────────────────────────────────── */
+  --background: #FFFFFF;
+  --foreground: #1A1D1F;
+  --card: #FFFFFF;
+  --card-foreground: #1A1D1F;
+  --popover: #FFFFFF;
+  --popover-foreground: #1A1D1F;
+  --muted: #F4F5F7;
+  --muted-foreground: #6B7280;
+  --border: #ECEEF1;
+  --input: #F4F5F7;
+  --ring: #5B5BFE;
   --radius: 0.5rem;
-  --sidebar: #001f3f; /* Navy sidebar */
-  --sidebar-foreground: #ffffff; /* White sidebar text */
-  --sidebar-primary: #ffcc00; /* Gold primary sidebar */
-  --sidebar-primary-foreground: #001f3f; /* Navy text on gold */
-  --sidebar-accent: #fefefe; /* Light accent sidebar */
-  --sidebar-accent-foreground: #374151; /* Charcoal text on light */
-  --sidebar-border: #e5e7eb; /* Light border */
-  --sidebar-ring: rgba(0, 31, 63, 0.2); /* Navy ring */
+
+  /* ── Brand — indigo ───────────────────────────────────── */
+  --primary: #5B5BFE;
+  --primary-foreground: #FFFFFF;
+  --accent: #EEF0FF;
+  --accent-foreground: #5B5BFE;
+
+  /* ── Secondary / neutral fill ─────────────────────────── */
+  --secondary: #F4F5F7;
+  --secondary-foreground: #1A1D1F;
+
+  /* ── Status ───────────────────────────────────────────── */
+  --destructive: #E11D48;
+  --destructive-foreground: #FFFFFF;
+
+  /* ── Sidebar — light panel ────────────────────────────── */
+  --sidebar: #FAFAFB;
+  --sidebar-foreground: #1A1D1F;
+  --sidebar-primary: #5B5BFE;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #F4F5F7;
+  --sidebar-accent-foreground: #1A1D1F;
+  --sidebar-border: #ECEEF1;
+  --sidebar-ring: #5B5BFE;
+
+  /* ── Charts ───────────────────────────────────────────── */
+  --chart-1: #5B5BFE;
+  --chart-2: #16A34A;
+  --chart-3: #F59E0B;
+  --chart-4: #2563EB;
+  --chart-5: #E11D48;
 }
 
 .dark {
-  /* Dark mode with navy/gold theme */
-  --background: #0f172a; /* Dark slate background */
-  --foreground: #e2e8f0; /* Light slate text */
-  --card: #1e293b; /* Dark slate card */
-  --card-foreground: #e2e8f0; /* Light text on dark cards */
-  --popover: #1e293b; /* Dark popover */
-  --popover-foreground: #e2e8f0; /* Light popover text */
-  --primary: #1e40af; /* Lighter navy for dark mode */
-  --primary-foreground: #ffffff; /* White on primary */
-  --secondary: #64748b; /* Lighter charcoal for dark mode */
-  --secondary-foreground: #ffffff; /* White text on secondary */
-  --muted: #334155; /* Dark muted */
-  --muted-foreground: #94a3b8; /* Light muted text */
-  --accent: #fbbf24; /* Lighter gold for dark mode */
-  --accent-foreground: #1e293b; /* Dark text on accent */
-  --destructive: #dc2626; /* Red destructive */
-  --destructive-foreground: #ffffff; /* White on destructive */
-  --border: #334155; /* Dark border */
-  --input: #1e293b; /* Dark input */
-  --ring: rgba(30, 64, 175, 0.3); /* Light navy ring for dark mode */
-  --chart-1: #fbbf24;
-  --chart-2: #1e40af;
-  --chart-3: #ff5733;
-  --chart-4: #10b981;
-  --chart-5: #3b82f6;
-  --sidebar: #1e293b;
-  --sidebar-foreground: #e2e8f0;
-  --sidebar-primary: #fbbf24;
-  --sidebar-primary-foreground: #1e293b;
-  --sidebar-accent: #334155;
-  --sidebar-accent-foreground: #e2e8f0;
-  --sidebar-border: #334155;
-  --sidebar-ring: rgba(30, 64, 175, 0.3);
+  --background: #0F1014;
+  --foreground: #E6E8F0;
+  --card: #16181F;
+  --card-foreground: #E6E8F0;
+  --popover: #16181F;
+  --popover-foreground: #E6E8F0;
+  --muted: #1E2028;
+  --muted-foreground: #8891A5;
+  --border: #1E2028;
+  --input: #1E2028;
+  --ring: #7A7AFF;
+  --primary: #7A7AFF;
+  --primary-foreground: #FFFFFF;
+  --accent: #1A1A4A;
+  --accent-foreground: #9898FF;
+  --secondary: #1E2028;
+  --secondary-foreground: #E6E8F0;
+  --destructive: #F43F6E;
+  --destructive-foreground: #FFFFFF;
+  --sidebar: #0C0E14;
+  --sidebar-foreground: #E6E8F0;
+  --sidebar-primary: #7A7AFF;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #1E2028;
+  --sidebar-accent-foreground: #E6E8F0;
+  --sidebar-border: #1E2028;
+  --sidebar-ring: #7A7AFF;
+  --chart-1: #7A7AFF;
+  --chart-2: #22C55E;
+  --chart-3: #FBBF24;
+  --chart-4: #3B82F6;
+  --chart-5: #F43F6E;
 }
 
 @theme inline {
@@ -121,5 +130,6 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-feature-settings: "tnum" 1;
   }
 }
