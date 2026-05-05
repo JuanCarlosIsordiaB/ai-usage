@@ -1,0 +1,125 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Professional navy blue and gold legal color scheme */
+  --background: #ffffff; /* Clean white background */
+  --foreground: #001f3f; /* Navy blue text */
+  --card: #fefefe; /* Light gray card background */
+  --card-foreground: #374151; /* Charcoal text on cards */
+  --popover: #ffffff; /* White popover background */
+  --popover-foreground: #374151; /* Charcoal popover text */
+  --primary: #001f3f; /* Navy blue primary */
+  --primary-foreground: #ffffff; /* White text on primary */
+  --secondary: #374151; /* Charcoal secondary */
+  --secondary-foreground: #ffffff; /* White text on secondary */
+  --muted: #fefefe; /* Light muted background */
+  --muted-foreground: #374151; /* Charcoal muted text */
+  --accent: #ffcc00; /* Gold accent */
+  --accent-foreground: #001f3f; /* Navy text on accent */
+  --destructive: #dc2626; /* Red for warnings */
+  --destructive-foreground: #ffffff; /* White text on destructive */
+  --border: #e5e7eb; /* Light gray border */
+  --input: #ffffff; /* White input background */
+  --ring: rgba(0, 31, 63, 0.1); /* Navy ring shadow */
+  --chart-1: #ffcc00; /* Gold chart color */
+  --chart-2: #001f3f; /* Navy chart color */
+  --chart-3: #ff5733; /* Orange chart color */
+  --chart-4: #28a745; /* Green chart color */
+  --chart-5: #007bff; /* Blue chart color */
+  --radius: 0.5rem;
+  --sidebar: #001f3f; /* Navy sidebar */
+  --sidebar-foreground: #ffffff; /* White sidebar text */
+  --sidebar-primary: #ffcc00; /* Gold primary sidebar */
+  --sidebar-primary-foreground: #001f3f; /* Navy text on gold */
+  --sidebar-accent: #fefefe; /* Light accent sidebar */
+  --sidebar-accent-foreground: #374151; /* Charcoal text on light */
+  --sidebar-border: #e5e7eb; /* Light border */
+  --sidebar-ring: rgba(0, 31, 63, 0.2); /* Navy ring */
+}
+
+.dark {
+  /* Dark mode with navy/gold theme */
+  --background: #0f172a; /* Dark slate background */
+  --foreground: #e2e8f0; /* Light slate text */
+  --card: #1e293b; /* Dark slate card */
+  --card-foreground: #e2e8f0; /* Light text on dark cards */
+  --popover: #1e293b; /* Dark popover */
+  --popover-foreground: #e2e8f0; /* Light popover text */
+  --primary: #1e40af; /* Lighter navy for dark mode */
+  --primary-foreground: #ffffff; /* White on primary */
+  --secondary: #64748b; /* Lighter charcoal for dark mode */
+  --secondary-foreground: #ffffff; /* White text on secondary */
+  --muted: #334155; /* Dark muted */
+  --muted-foreground: #94a3b8; /* Light muted text */
+  --accent: #fbbf24; /* Lighter gold for dark mode */
+  --accent-foreground: #1e293b; /* Dark text on accent */
+  --destructive: #dc2626; /* Red destructive */
+  --destructive-foreground: #ffffff; /* White on destructive */
+  --border: #334155; /* Dark border */
+  --input: #1e293b; /* Dark input */
+  --ring: rgba(30, 64, 175, 0.3); /* Light navy ring for dark mode */
+  --chart-1: #fbbf24;
+  --chart-2: #1e40af;
+  --chart-3: #ff5733;
+  --chart-4: #10b981;
+  --chart-5: #3b82f6;
+  --sidebar: #1e293b;
+  --sidebar-foreground: #e2e8f0;
+  --sidebar-primary: #fbbf24;
+  --sidebar-primary-foreground: #1e293b;
+  --sidebar-accent: #334155;
+  --sidebar-accent-foreground: #e2e8f0;
+  --sidebar-border: #334155;
+  --sidebar-ring: rgba(30, 64, 175, 0.3);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
