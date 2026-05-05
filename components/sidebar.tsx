@@ -114,8 +114,8 @@ export function Sidebar({ activeModule = "dashboard", onNavigate }: SidebarProps
         />
 
         <NavSection label="Gestión de casos" />
-        <NavItem icon={FileText} label="Expedientes" badge={24} badgeColor="info" />
-        <NavItem icon={Users}    label="Clientes"    badge={156} />
+        <NavItem icon={FileText} label="Expedientes" badge={24} badgeColor="info" module="expedientes" activeModule={activeModule} onNavigate={onNavigate} />
+        <NavItem icon={Users}    label="Clientes"    badge={156} module="clientes" activeModule={activeModule} onNavigate={onNavigate} />
         <NavItem icon={Calendar} label="Calendario"  module="calendario" activeModule={activeModule} onNavigate={onNavigate} badge={3} badgeColor="critical" />
 
         <NavSection label="Documentos e IA" />
@@ -133,12 +133,12 @@ export function Sidebar({ activeModule = "dashboard", onNavigate }: SidebarProps
           activeModule={activeModule}
           onNavigate={onNavigate}
         />
-        <NavItem icon={Bot} label="Asistente IA" />
+        <NavItem icon={Bot} label="Asistente IA" module="asistente-ia" activeModule={activeModule} onNavigate={onNavigate} />
 
         <NavSection label="Investigación legal" />
-        <NavItem icon={Search}  label="Búsqueda jurisprudencial" />
-        <NavItem icon={Gavel}   label="Sentencias CJF/SCJN" badge="2.3M" />
-        <NavItem icon={Archive} label="Mis colecciones" />
+        <NavItem icon={Search}  label="Búsqueda jurisprudencial" module="investigacion" activeModule={activeModule} onNavigate={onNavigate} />
+        <NavItem icon={Gavel}   label="Sentencias CJF/SCJN" badge="2.3M" module="investigacion" activeModule={activeModule} onNavigate={onNavigate} />
+        <NavItem icon={Archive} label="Mis colecciones" module="investigacion" activeModule={activeModule} onNavigate={onNavigate} />
 
         <NavSection label="Comunicación" />
         <NavItem
@@ -157,7 +157,7 @@ export function Sidebar({ activeModule = "dashboard", onNavigate }: SidebarProps
           activeModule={activeModule}
           onNavigate={onNavigate}
         />
-        <NavItem icon={Newspaper} label="Noticias jurídicas" />
+        <NavItem icon={Newspaper} label="Noticias jurídicas" module="noticias" activeModule={activeModule} onNavigate={onNavigate} />
         <NavItem
           icon={Bell}
           label="Notificaciones"
@@ -169,8 +169,8 @@ export function Sidebar({ activeModule = "dashboard", onNavigate }: SidebarProps
         />
 
         <NavSection label="Herramientas" />
-        <NavItem icon={Clock}       label="Tiempo facturado" />
-        <NavItem icon={AlertCircle} label="Vencimientos" badge={3} badgeColor="warning" />
+        <NavItem icon={Clock}       label="Tiempo facturado" module="tiempo-facturado" activeModule={activeModule} onNavigate={onNavigate} />
+        <NavItem icon={AlertCircle} label="Vencimientos" badge={3} badgeColor="warning" module="vencimientos" activeModule={activeModule} onNavigate={onNavigate} />
       </nav>
 
       {/* Footer */}
