@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import { useState } from "react"
 import {
@@ -390,7 +390,7 @@ function NuevaFacturaModal({ open, onClose }: NuevaFacturaModalProps) {
           <div className="flex justify-end gap-2 pt-1">
             <Button variant="outline" onClick={handleClose}>Cancelar</Button>
             <Button
-              className="bg-primary text-primary-foreground hover:bg-primary/90"
+              className="bg-[#111111] text-white hover:bg-[#333333]"
               onClick={handleClose}
             >
               Crear factura
@@ -441,15 +441,15 @@ function InvoiceDetail({ invoice, onBack }: InvoiceDetailProps) {
           <div className="flex items-start justify-between">
             <div>
               <div className="flex items-center gap-3 mb-1">
-                <div className="w-9 h-9 bg-[#EEF0FF] rounded-lg flex items-center justify-center">
+                <div className="w-9 h-9 bg-[#725a4214] rounded-lg flex items-center justify-center">
                   <FileText className="w-5 h-5 text-primary" />
                 </div>
                 <div>
-                  <h2 className="text-xl font-bold text-foreground">LegalPro</h2>
+                  <h2 className="text-xl font-bold text-foreground">DespachoEnLinea</h2>
                   <p className="text-xs text-muted-foreground">Despacho Jurídico</p>
                 </div>
               </div>
-              <p className="text-sm text-muted-foreground mt-3">Despacho Jurídico LegalPro S.C.</p>
+              <p className="text-sm text-muted-foreground mt-3">Despacho Jurídico DespachoEnLinea S.C.</p>
               <p className="text-sm text-muted-foreground">RFC: DJL200101ABC</p>
               <p className="text-sm text-muted-foreground">Av. Insurgentes Sur 1234, CDMX</p>
             </div>
@@ -512,7 +512,7 @@ function InvoiceDetail({ invoice, onBack }: InvoiceDetailProps) {
 
           {/* Footer note */}
           <p className="text-xs text-muted-foreground text-center">
-            Gracias por su confianza. Para cualquier aclaración comuníquese a facturacion@legalpro.mx
+            Gracias por su confianza. Para cualquier aclaración comuníquese a facturacion@DespachoEnLinea.mx
           </p>
         </CardContent>
       </Card>
@@ -547,7 +547,7 @@ export function Facturacion() {
         <div className="flex items-center justify-between mb-6">
           <h1 className="text-[22px] font-semibold text-foreground leading-none">Facturación</h1>
           <Button
-            className="gap-2 bg-primary text-primary-foreground hover:bg-primary/90"
+            className="gap-2 bg-[#111111] text-white hover:bg-[#333333]"
             onClick={() => setModalOpen(true)}
           >
             <Plus className="w-4 h-4" />
@@ -638,3 +638,5 @@ export function Facturacion() {
     </div>
   )
 }
+
+

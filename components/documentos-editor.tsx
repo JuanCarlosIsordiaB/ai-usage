@@ -299,7 +299,7 @@ export function DocumentosEditor({ document, onBack }: DocumentosEditorProps) {
           onClick={() => setShowTrackChanges((v) => !v)}
           className={`h-8 text-xs gap-1.5 shrink-0 ${
             showTrackChanges
-              ? "bg-primary text-primary-foreground"
+              ? "bg-[#111111] text-white"
               : "border-border text-foreground"
           }`}
         >
@@ -330,7 +330,7 @@ export function DocumentosEditor({ document, onBack }: DocumentosEditorProps) {
         </Button>
 
         {/* Save */}
-        <Button size="sm" className="h-8 text-xs gap-1.5 bg-primary text-primary-foreground shrink-0">
+        <Button size="sm" className="h-8 text-xs gap-1.5 bg-[#111111] text-white hover:bg-[#333333] shrink-0">
           <Save className="w-3.5 h-3.5" />
           Guardar
         </Button>
@@ -446,7 +446,7 @@ export function DocumentosEditor({ document, onBack }: DocumentosEditorProps) {
               Por una parte, <strong>TechCorp S.A. de C.V.</strong>, con domicilio en Av. Reforma 350, Col. Juárez,
               Ciudad de México, representada en este acto por su Director General, el Lic. Roberto Sandoval
               Jiménez (en adelante "el Cliente"); y por la otra parte, el Despacho Jurídico{" "}
-              <strong>LegalPro Abogados S.C.</strong>, con domicilio en Paseo de la Reforma 505, Piso 12,
+              <strong>DespachoEnLinea Abogados S.C.</strong>, con domicilio en Paseo de la Reforma 505, Piso 12,
               Col. Cuauhtémoc, Ciudad de México (en adelante "el Prestador").
             </p>
 

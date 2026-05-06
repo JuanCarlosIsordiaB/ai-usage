@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import { useState } from "react"
 import { Search, Gavel, Filter, BookOpen, ExternalLink, Star, StarOff, Clock, ChevronRight, Scale, FileText } from "lucide-react"
@@ -91,7 +91,7 @@ const TESIS_DATA: Tesis[] = [
   },
 ]
 
-export function InvestigacionJuridica() {
+export function InvestigacionJuridica({ initialTab = "busqueda" }: { initialTab?: string }) {
   const [query, setQuery] = useState("")
   const [materia, setMateria] = useState("todas")
   const [tribunal, setTribunal] = useState("todos")
@@ -129,7 +129,7 @@ export function InvestigacionJuridica() {
         <p className="text-[13px] text-muted-foreground mt-0.5">Consulta jurisprudencia y tesis del CJF y SCJN — más de 2.3M registros</p>
       </div>
 
-      <Tabs defaultValue="busqueda" className="flex flex-col flex-1 overflow-hidden">
+      <Tabs defaultValue={initialTab} className="flex flex-col flex-1 overflow-hidden">
         <div className="px-6 pt-4 shrink-0">
           <TabsList>
             <TabsTrigger value="busqueda" className="gap-2">
@@ -367,3 +367,4 @@ export function InvestigacionJuridica() {
     </div>
   )
 }
+

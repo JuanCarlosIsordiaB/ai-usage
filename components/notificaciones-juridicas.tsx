@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import { useState } from "react"
 import { Badge } from "@/components/ui/badge"
@@ -351,3 +351,4 @@ function NotificationCard({
     </Card>
   )
 }
+

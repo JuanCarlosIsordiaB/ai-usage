@@ -1,18 +1,24 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
+import { Playfair_Display, DM_Sans } from "next/font/google"
 import { Suspense } from "react"
 import "./globals.css"
-import { ThemeProvider } from "@/components/theme-provider"
 import { Toaster } from "@/components/ui/sonner"
 
-const inter = Inter({
+const playfair = Playfair_Display({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-playfair",
+  weight: ["400", "500", "600", "700"],
+})
+
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  variable: "--font-dm-sans",
+  weight: ["400", "500", "700"],
 })
 
 export const metadata: Metadata = {
-  title: "LegalPro - Plataforma Profesional para Abogados",
+  title: "LexaOS - Plataforma Profesional para Abogados",
   description: "Gestión integral de casos, documentos y clientes para despachos jurídicos",
   generator: "v0.app",
 }
@@ -24,11 +30,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body className={`font-sans ${inter.variable} antialiased`}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <Suspense fallback={null}>{children}</Suspense>
-          <Toaster />
-        </ThemeProvider>
+      <body className={`${playfair.variable} ${dmSans.variable} antialiased`}>
+        <Suspense fallback={null}>{children}</Suspense>
+        <Toaster />
       </body>
     </html>
   )

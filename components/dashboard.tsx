@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState, useEffect } from "react"
 import { toast } from "sonner"
@@ -39,14 +39,14 @@ const WhatsAppIcon = () => (
 type StatusKey = "activo" | "revision" | "urgente" | "completado" | "hoy" | "manana" | "3dias" | "en-progreso"
 
 const STATUS_CONFIG: Record<StatusKey, { label: string; dot: string; text: string; bg: string }> = {
-  activo:        { label: "Activo",        dot: "#2563EB", text: "#2563EB", bg: "#E6EEFC" },
+  activo:        { label: "Activo",        dot: "#725a42", text: "#725a42", bg: "#725a4214" },
   revision:      { label: "Revisión",      dot: "#F59E0B", text: "#F59E0B", bg: "#FEF3C7" },
   urgente:       { label: "Urgente",       dot: "#E11D48", text: "#E11D48", bg: "#FCE7EB" },
   completado:    { label: "Completado",    dot: "#16A34A", text: "#16A34A", bg: "#E8F7EE" },
   hoy:           { label: "Hoy",           dot: "#E11D48", text: "#E11D48", bg: "#FCE7EB" },
   manana:        { label: "Mañana",        dot: "#F59E0B", text: "#F59E0B", bg: "#FEF3C7" },
-  "3dias":       { label: "3 días",        dot: "#6B7280", text: "#6B7280", bg: "#F4F5F7" },
-  "en-progreso": { label: "En progreso",   dot: "#5B5BFE", text: "#5B5BFE", bg: "#EEF0FF" },
+  "3dias":       { label: "3 días",        dot: "#555555", text: "#555555", bg: "#F5F5F5" },
+  "en-progreso": { label: "En progreso",   dot: "#725a42", text: "#725a42", bg: "#725a4214" },
 }
 
 function StatusPill({ status }: { status: StatusKey }) {
@@ -176,23 +176,39 @@ export function Dashboard() {
     <div className="flex flex-col h-full bg-background">
 
       {/* ── Top bar ─────────────────────────────────────────────────────────── */}
-      <header className="h-16 border-b border-border bg-background px-6 flex items-center gap-4 shrink-0">
+      <header className="h-16 border-b border-border bg-white px-6 flex items-center gap-4 shrink-0">
         <h1 className="text-[22px] font-semibold text-foreground leading-none">Dashboard</h1>
         <div className="flex-1 flex justify-center">
           <div className="relative w-full max-w-sm">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground pointer-events-none" />
             <input
               placeholder="Buscar expedientes, clientes..."
-              className="w-full h-9 pl-9 pr-4 bg-[#F4F5F7] rounded-full text-[14px] text-foreground placeholder:text-[#9CA3AF] border-0 outline-none focus:ring-2 focus:ring-primary/30 transition-shadow"
+              className="w-full h-9 pl-9 pr-4 rounded-full text-[14px] outline-none transition-shadow"
+              style={{
+                background: "var(--bg-light)",
+                color: "var(--color-charcoal)",
+                border: "1px solid var(--border-default)",
+              }}
+              onFocus={e => {
+                e.currentTarget.style.borderColor = "var(--color-teal)"
+                e.currentTarget.style.boxShadow = "0 0 0 3px var(--color-teal-light)"
+              }}
+              onBlur={e => {
+                e.currentTarget.style.borderColor = "var(--border-default)"
+                e.currentTarget.style.boxShadow = "none"
+              }}
             />
           </div>
         </div>
         <div className="flex items-center gap-1.5">
-          <button className="relative w-9 h-9 rounded-lg hover:bg-[#F4F5F7] flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors">
+          <button className="relative w-9 h-9 rounded-lg hover:bg-[var(--bg-slate-50)] flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors">
             <Bell className="w-[18px] h-[18px]" />
             <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-[#E11D48] rounded-full" />
           </button>
-          <button className="w-9 h-9 rounded-full bg-[#EEF0FF] flex items-center justify-center text-[12px] font-semibold text-primary hover:bg-[#E0E0FF] transition-colors">
+          <button
+            className="w-9 h-9 rounded-full flex items-center justify-center text-[12px] font-semibold transition-colors"
+            style={{ background: "var(--color-teal-light)", color: "var(--color-teal)" }}
+          >
             MG
           </button>
         </div>
@@ -205,8 +221,8 @@ export function Dashboard() {
         <Card className="border-border bg-card">
           <CardHeader className="pb-4">
             <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-lg bg-[#EEF0FF] flex items-center justify-center shrink-0">
-                <Calendar className="w-4 h-4 text-primary" />
+              <div className="w-8 h-8 rounded-lg bg-[var(--color-teal-light)] flex items-center justify-center shrink-0">
+                <Calendar className="w-4 h-4 text-[var(--color-teal)]" />
               </div>
               <div>
                 <CardTitle className="text-[18px] font-semibold text-foreground leading-none">Calendario</CardTitle>
@@ -240,7 +256,7 @@ export function Dashboard() {
                 </div>
               ))}
             </div>
-            <button className="mt-4 w-full text-[13px] text-primary hover:text-primary/80 flex items-center justify-center gap-1 py-1 transition-colors">
+            <button className="mt-4 w-full text-[13px] text-[var(--color-teal)] hover:text-[var(--color-teal)]/80 flex items-center justify-center gap-1 py-1 transition-colors">
               Abrir calendario completo <ChevronRight className="w-3.5 h-3.5" />
             </button>
           </CardContent>
@@ -260,7 +276,8 @@ export function Dashboard() {
                 </div>
               </div>
               <Button
-                className="bg-primary text-white hover:bg-primary/90 gap-1.5 h-9 px-4 text-[13px] font-medium"
+                className="gap-1.5 h-9 px-4 text-[13px] font-medium text-white hover:opacity-90"
+                style={{ background: "var(--color-charcoal)" }}
                 onClick={() => setAvisoModalOpen(true)}
               >
                 <Plus className="w-4 h-4" /> Nuevo aviso
@@ -275,9 +292,9 @@ export function Dashboard() {
                     <p className="text-[14px] font-semibold text-foreground leading-snug">{aviso.titulo}</p>
                     <p className="text-[12px] text-muted-foreground mt-1 leading-relaxed">{aviso.descripcion}</p>
                     <div className="flex items-center gap-1.5 mt-2">
-                      <span className="text-[11px] text-[#9CA3AF]">{aviso.autor}</span>
-                      <span className="text-[11px] text-[#9CA3AF]">·</span>
-                      <span className="text-[11px] text-[#9CA3AF]">{aviso.fecha}</span>
+                      <span className="text-[11px] text-[#888888]">{aviso.autor}</span>
+                      <span className="text-[11px] text-[#888888]">·</span>
+                      <span className="text-[11px] text-[#888888]">{aviso.fecha}</span>
                     </div>
                   </div>
                   <div className="flex flex-col gap-2 border-t border-border pt-3">
@@ -321,8 +338,8 @@ export function Dashboard() {
           <Card className="border-border bg-card">
             <CardHeader className="pb-3">
               <div className="flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded-lg bg-[#EEF0FF] flex items-center justify-center shrink-0">
-                  <Folder className="w-4 h-4 text-primary" />
+                <div className="w-8 h-8 rounded-lg bg-[var(--color-teal-light)] flex items-center justify-center shrink-0">
+                  <Folder className="w-4 h-4 text-[var(--color-teal)]" />
                 </div>
                 <div>
                   <CardTitle className="text-[15px] font-semibold text-foreground">Expedientes</CardTitle>
@@ -345,7 +362,7 @@ export function Dashboard() {
                 </div>
                 <StatusPill status="revision" />
               </div>
-              <button className="w-full text-[13px] text-primary hover:text-primary/80 flex items-center justify-center gap-1 pt-1 transition-colors">
+              <button className="w-full text-[13px] text-[var(--color-teal)] hover:text-[var(--color-teal)]/80 flex items-center justify-center gap-1 pt-1 transition-colors">
                 Ver todos los expedientes <ChevronRight className="w-3.5 h-3.5" />
               </button>
             </CardContent>
@@ -355,8 +372,8 @@ export function Dashboard() {
           <Card className="border-border bg-card">
             <CardHeader className="pb-3">
               <div className="flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded-lg bg-[#F4F5F7] flex items-center justify-center shrink-0">
-                  <Newspaper className="w-4 h-4 text-[#6B7280]" />
+                <div className="w-8 h-8 rounded-lg bg-[#F5F5F5] flex items-center justify-center shrink-0">
+                  <Newspaper className="w-4 h-4 text-[#555555]" />
                 </div>
                 <div>
                   <CardTitle className="text-[15px] font-semibold text-foreground">Noticias jurídicas</CardTitle>
@@ -375,7 +392,7 @@ export function Dashboard() {
                   <p className="text-[12px] text-muted-foreground mt-0.5">{item.meta}</p>
                 </div>
               ))}
-              <button className="w-full text-[13px] text-primary hover:text-primary/80 flex items-center justify-center gap-1 pt-1 transition-colors">
+              <button className="w-full text-[13px] text-[var(--color-teal)] hover:text-[var(--color-teal)]/80 flex items-center justify-center gap-1 pt-1 transition-colors">
                 Ver todas las noticias <ChevronRight className="w-3.5 h-3.5" />
               </button>
             </CardContent>
@@ -416,7 +433,7 @@ export function Dashboard() {
                 </div>
                 <StatusPill status="3dias" />
               </div>
-              <button className="w-full text-[13px] text-primary hover:text-primary/80 flex items-center justify-center gap-1 pt-1 transition-colors">
+              <button className="w-full text-[13px] text-[var(--color-teal)] hover:text-[var(--color-teal)]/80 flex items-center justify-center gap-1 pt-1 transition-colors">
                 Ver calendario completo <ChevronRight className="w-3.5 h-3.5" />
               </button>
             </CardContent>
@@ -444,10 +461,10 @@ export function Dashboard() {
                 <div key={i} className="p-3 border border-border rounded-lg">
                   <p className="text-[14px] font-semibold text-foreground leading-snug">{item.title}</p>
                   <p className="text-[12px] text-muted-foreground mt-0.5">{item.meta}</p>
-                  <p className="text-[11px] text-[#9CA3AF] mt-0.5">Por: {item.autor}</p>
+                  <p className="text-[11px] text-[#888888] mt-0.5">Por: {item.autor}</p>
                 </div>
               ))}
-              <button className="w-full text-[13px] text-primary hover:text-primary/80 flex items-center justify-center gap-1 pt-1 transition-colors">
+              <button className="w-full text-[13px] text-[var(--color-teal)] hover:text-[var(--color-teal)]/80 flex items-center justify-center gap-1 pt-1 transition-colors">
                 Ver chat interno <ChevronRight className="w-3.5 h-3.5" />
               </button>
             </CardContent>
@@ -457,8 +474,8 @@ export function Dashboard() {
           <Card className="border-border bg-card">
             <CardHeader className="pb-3">
               <div className="flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded-lg bg-[#EEF0FF] flex items-center justify-center shrink-0">
-                  <Scale className="w-4 h-4 text-primary" />
+                <div className="w-8 h-8 rounded-lg bg-[var(--color-teal-light)] flex items-center justify-center shrink-0">
+                  <Scale className="w-4 h-4 text-[var(--color-teal)]" />
                 </div>
                 <div>
                   <CardTitle className="text-[15px] font-semibold text-foreground">Acuerdos del día</CardTitle>
@@ -472,7 +489,7 @@ export function Dashboard() {
                   <div>
                     <p className="text-[14px] font-semibold text-foreground">Sentencia favorable</p>
                     <p className="text-[12px] text-muted-foreground mt-0.5">Juzgado Tercero Civil · EXP-2024-001</p>
-                    <p className="text-[11px] text-[#9CA3AF] mt-0.5">Ana Martínez</p>
+                    <p className="text-[11px] text-[#888888] mt-0.5">Ana Martínez</p>
                   </div>
                   <StatusPill status="completado" />
                 </div>
@@ -480,7 +497,7 @@ export function Dashboard() {
               <div className="p-3 border border-border rounded-lg">
                 <p className="text-[14px] font-semibold text-foreground">Auto de admisión</p>
                 <p className="text-[12px] text-muted-foreground mt-0.5">Juzgado Séptimo Mercantil · EXP-2024-015</p>
-                <p className="text-[11px] text-[#9CA3AF] mt-0.5">Luis Hernández</p>
+                <p className="text-[11px] text-[#888888] mt-0.5">Luis Hernández</p>
               </div>
               <div className="p-3 border border-border rounded-lg">
                 <p className="text-[14px] font-semibold text-foreground">Citatorio a audiencia</p>
@@ -489,7 +506,7 @@ export function Dashboard() {
                   <CheckCircle2 className="w-3 h-3" /> Audiencia añadida al calendario
                 </p>
               </div>
-              <button className="w-full text-[13px] text-primary hover:text-primary/80 flex items-center justify-center gap-1 pt-1 transition-colors">
+              <button className="w-full text-[13px] text-[var(--color-teal)] hover:text-[var(--color-teal)]/80 flex items-center justify-center gap-1 pt-1 transition-colors">
                 Ver todos los acuerdos <ChevronRight className="w-3.5 h-3.5" />
               </button>
             </CardContent>
@@ -508,10 +525,10 @@ export function Dashboard() {
             </div>
           </CardHeader>
           <CardContent className="space-y-2">
-            <div className="flex items-center justify-between p-4 border border-border rounded-lg hover:bg-[#F4F5F7] transition-colors">
+            <div className="flex items-center justify-between p-4 border border-border rounded-lg hover:bg-[var(--bg-slate-50)] transition-colors">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-lg bg-[#EEF0FF] flex items-center justify-center shrink-0">
-                  <Folder className="w-5 h-5 text-primary" />
+                <div className="w-10 h-10 rounded-lg bg-[var(--color-teal-light)] flex items-center justify-center shrink-0">
+                  <Folder className="w-5 h-5 text-[var(--color-teal)]" />
                 </div>
                 <div>
                   <p className="text-[14px] font-semibold text-foreground">Demanda laboral — Tech Corp</p>
@@ -521,7 +538,7 @@ export function Dashboard() {
               <StatusPill status="en-progreso" />
             </div>
 
-            <div className="flex items-center justify-between p-4 border border-border rounded-lg hover:bg-[#F4F5F7] transition-colors">
+            <div className="flex items-center justify-between p-4 border border-border rounded-lg hover:bg-[var(--bg-slate-50)] transition-colors">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-lg bg-[#E8F7EE] flex items-center justify-center shrink-0">
                   <CheckCircle2 className="w-5 h-5 text-[#16A34A]" />
@@ -534,7 +551,7 @@ export function Dashboard() {
               <StatusPill status="completado" />
             </div>
 
-            <div className="flex items-center justify-between p-4 border border-border rounded-lg hover:bg-[#F4F5F7] transition-colors">
+            <div className="flex items-center justify-between p-4 border border-border rounded-lg hover:bg-[var(--bg-slate-50)] transition-colors">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-lg bg-[#FCE7EB] flex items-center justify-center shrink-0">
                   <AlertTriangle className="w-5 h-5 text-[#E11D48]" />
@@ -547,7 +564,7 @@ export function Dashboard() {
               <StatusPill status="urgente" />
             </div>
 
-            <button className="w-full text-[13px] text-muted-foreground hover:text-foreground border border-border rounded-lg py-2.5 flex items-center justify-center gap-1 hover:bg-[#F4F5F7] transition-colors mt-1">
+            <button className="w-full text-[13px] text-muted-foreground hover:text-foreground border border-border rounded-lg py-2.5 flex items-center justify-center gap-1 hover:bg-[var(--bg-slate-50)] transition-colors mt-1">
               Ver todos los expedientes <ChevronRight className="w-3.5 h-3.5" />
             </button>
           </CardContent>
@@ -563,19 +580,19 @@ export function Dashboard() {
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-              <Button className="h-auto py-3.5 flex-col gap-2 bg-primary text-white hover:bg-primary/90 font-medium rounded-lg">
+              <Button className="h-auto py-3.5 flex-col gap-2 font-medium rounded-lg text-white hover:opacity-90" style={{ background: "var(--color-charcoal)" }}>
                 <Plus className="w-5 h-5" />
                 <span className="text-[13px]">Nuevo expediente</span>
               </Button>
-              <Button variant="outline" className="h-auto py-3.5 flex-col gap-2 border-border text-muted-foreground hover:text-foreground hover:bg-[#F4F5F7] rounded-lg">
+              <Button variant="outline" className="h-auto py-3.5 flex-col gap-2 border-border text-muted-foreground hover:text-foreground hover:bg-[var(--bg-slate-50)] rounded-lg">
                 <FileText className="w-5 h-5" />
                 <span className="text-[13px]">Crear documento</span>
               </Button>
-              <Button variant="outline" className="h-auto py-3.5 flex-col gap-2 border-border text-muted-foreground hover:text-foreground hover:bg-[#F4F5F7] rounded-lg">
+              <Button variant="outline" className="h-auto py-3.5 flex-col gap-2 border-border text-muted-foreground hover:text-foreground hover:bg-[var(--bg-slate-50)] rounded-lg">
                 <Calendar className="w-5 h-5" />
                 <span className="text-[13px]">Programar cita</span>
               </Button>
-              <Button variant="outline" className="h-auto py-3.5 flex-col gap-2 border-border text-muted-foreground hover:text-foreground hover:bg-[#F4F5F7] rounded-lg">
+              <Button variant="outline" className="h-auto py-3.5 flex-col gap-2 border-border text-muted-foreground hover:text-foreground hover:bg-[var(--bg-slate-50)] rounded-lg">
                 <Users className="w-5 h-5" />
                 <span className="text-[13px]">Agregar cliente</span>
               </Button>
@@ -595,17 +612,22 @@ export function Dashboard() {
             </DialogTitle>
             <DialogDescription>Confirma el envío del siguiente evento:</DialogDescription>
           </DialogHeader>
-          {whatsappModal.event && (
-            <div className="p-4 border border-border rounded-lg bg-[#F4F5F7] space-y-1.5">
-              <p className="text-[14px] font-semibold text-foreground">{whatsappModal.event.title}</p>
-              <p className="text-[13px] text-muted-foreground">
-                <span className="text-[#9CA3AF]">Fecha/hora:</span> {whatsappModal.event.datetime}
-              </p>
-              <p className="text-[13px] text-muted-foreground">
-                <span className="text-[#9CA3AF]">Lugar:</span> {whatsappModal.event.location}
-              </p>
-            </div>
-          )}
+          <div className="px-6 py-5 bg-white">
+            {whatsappModal.event && (
+              <div
+                className="p-4 rounded-[var(--radius-md)] space-y-1.5"
+                style={{ background: "var(--bg-neutral)", border: "1px solid var(--border-default)" }}
+              >
+                <p className="text-[14px] font-semibold" style={{ color: "var(--color-charcoal)" }}>{whatsappModal.event.title}</p>
+                <p className="text-[13px]" style={{ color: "var(--color-slate-500)" }}>
+                  <span style={{ color: "var(--color-slate-400)" }}>Fecha/hora:</span> {whatsappModal.event.datetime}
+                </p>
+                <p className="text-[13px]" style={{ color: "var(--color-slate-500)" }}>
+                  <span style={{ color: "var(--color-slate-400)" }}>Lugar:</span> {whatsappModal.event.location}
+                </p>
+              </div>
+            )}
+          </div>
           <DialogFooter>
             <Button variant="outline" onClick={closeWhatsappModal}>Cancelar</Button>
             <Button
@@ -632,7 +654,7 @@ export function Dashboard() {
             <DialogTitle>Nuevo aviso interno</DialogTitle>
             <DialogDescription>Completa los campos y publica el aviso para el equipo.</DialogDescription>
           </DialogHeader>
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-4 px-6 py-5 bg-white">
             <div className="flex flex-col gap-1.5">
               <Label htmlFor="aviso-titulo">Título</Label>
               <Input
@@ -686,3 +708,4 @@ export function Dashboard() {
     </div>
   )
 }
+

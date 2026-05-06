@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import { useState, useRef, useEffect } from "react"
 import { Button } from "@/components/ui/button"
@@ -261,7 +261,7 @@ export function ChatInterno() {
                   <div
                     className={`px-3.5 py-2.5 text-sm leading-relaxed ${
                       msg.sent
-                        ? "bg-primary text-primary-foreground rounded-2xl rounded-br-sm"
+                        ? "bg-[#111111] text-white rounded-2xl rounded-br-sm"
                         : "bg-muted text-foreground rounded-2xl rounded-bl-sm"
                     }`}
                   >
@@ -302,7 +302,7 @@ export function ChatInterno() {
             </Button>
             <Button
               size="icon"
-              className="h-8 w-8 shrink-0 bg-primary hover:bg-primary/90 text-primary-foreground"
+              className="h-8 w-8 shrink-0 bg-[#111111] hover:bg-[#333333] text-white"
               onClick={handleSend}
             >
               <Send className="w-4 h-4" />
@@ -339,7 +339,7 @@ export function ChatInterno() {
                 onClick={() => setNewConvType("group")}
                 className="flex items-center gap-4 p-4 border border-border rounded-xl hover:bg-muted transition-colors text-left"
               >
-                <div className="w-10 h-10 rounded-full bg-[#EEF0FF] flex items-center justify-center shrink-0">
+                <div className="w-10 h-10 rounded-full bg-[#725a4214] flex items-center justify-center shrink-0">
                   <Users className="w-5 h-5 text-primary" />
                 </div>
                 <div>
@@ -374,7 +374,7 @@ export function ChatInterno() {
                 <Button
                   disabled={!newConvName.trim()}
                   onClick={() => setNewConvOpen(false)}
-                  className="bg-primary text-primary-foreground hover:bg-primary/90"
+                  className="bg-[#111111] text-white hover:bg-[#333333]"
                 >
                   {newConvType === "dm" ? "Iniciar conversación" : "Crear canal"}
                 </Button>
@@ -397,7 +397,7 @@ function ConvItem({ conv, active, onClick }: { conv: ConvType; active: boolean; 
       onClick={onClick}
       className={`w-full flex items-center gap-3 px-2 py-2.5 rounded-lg text-left transition-colors ${
         active
-          ? "bg-primary text-primary-foreground"
+          ? "bg-[#725a42] text-white"
           : "hover:bg-muted"
       }`}
     >
@@ -448,8 +448,8 @@ function Avatar({
 }) {
   const dim = size === "sm" ? "w-7 h-7 text-xs" : "w-9 h-9 text-sm"
   const bg = active
-    ? "bg-primary-foreground text-primary"
-    : "bg-primary text-primary-foreground"
+    ? "bg-white text-[#725a42]"
+    : "bg-[#725a42] text-white"
 
   return (
     <div className={`${dim} ${bg} rounded-full flex items-center justify-center font-semibold shrink-0`}>
@@ -457,3 +457,5 @@ function Avatar({
     </div>
   )
 }
+
+

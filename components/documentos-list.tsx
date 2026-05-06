@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -182,12 +182,12 @@ export function DocumentosList({ onOpen }: DocumentosListProps) {
         {/* Top bar */}
         <div className="px-6 h-16 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 bg-[#EEF0FF] rounded-lg flex items-center justify-center">
+            <div className="w-8 h-8 bg-[#725a4214] rounded-lg flex items-center justify-center">
               <FileText className="w-4 h-4 text-primary" />
             </div>
             <h1 className="text-[22px] font-semibold text-foreground leading-none">Documentos</h1>
           </div>
-          <Button className="bg-primary text-primary-foreground hover:bg-primary/90 gap-2">
+          <Button className="bg-[#111111] text-white hover:bg-[#333333] gap-2">
             <Plus className="w-4 h-4" />
             Nuevo documento
           </Button>
@@ -197,7 +197,7 @@ export function DocumentosList({ onOpen }: DocumentosListProps) {
         <div className="px-6 pb-3 flex items-center gap-8 border-t border-border pt-3">
           <StatCard value={String(total)} label="Total" />
           <div className="w-px h-6 bg-border" />
-          <StatCard value={String(borradores)} label="Borradores" accent="text-[#6B7280]" />
+          <StatCard value={String(borradores)} label="Borradores" accent="text-[#555555]" />
           <StatCard value={String(revision)} label="En revisión" accent="text-[#F59E0B]" />
           <StatCard value={String(finales)} label="Finales" accent="text-[#16A34A]" />
         </div>
@@ -227,7 +227,7 @@ export function DocumentosList({ onOpen }: DocumentosListProps) {
 
         {/* Status quick-filters */}
         <div className="flex items-center gap-2 ml-auto">
-          <button className="px-3 py-1.5 rounded-full text-xs font-medium bg-primary text-primary-foreground">Todos</button>
+          <button className="px-3 py-1.5 rounded-full text-xs font-medium bg-[#111111] text-white">Todos</button>
           <button className="px-3 py-1.5 rounded-full text-xs font-medium border border-border text-muted-foreground hover:bg-muted">Borradores</button>
           <button className="px-3 py-1.5 rounded-full text-xs font-medium border border-amber-200 text-amber-700 hover:bg-amber-50">En revisión</button>
           <button className="px-3 py-1.5 rounded-full text-xs font-medium border border-emerald-200 text-emerald-700 hover:bg-emerald-50">Finales</button>
@@ -335,7 +335,7 @@ export function DocumentosList({ onOpen }: DocumentosListProps) {
                 key={p}
                 className={`w-8 h-8 rounded text-xs font-medium transition-colors ${
                   p === 1
-                    ? "bg-primary text-primary-foreground"
+                    ? "bg-[#111111] text-white"
                     : "text-muted-foreground hover:bg-muted"
                 }`}
               >
@@ -353,3 +353,5 @@ export function DocumentosList({ onOpen }: DocumentosListProps) {
 }
 
 export type { Document }
+
+

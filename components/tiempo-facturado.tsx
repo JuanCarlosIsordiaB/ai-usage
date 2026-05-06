@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import { useState, useEffect, useRef } from "react"
 import { Clock, Play, Pause, Plus, Timer, DollarSign, TrendingUp, Folder, MoreHorizontal, CheckCircle2 } from "lucide-react"
@@ -299,3 +299,4 @@ export function TiempoFacturado() {
     </div>
   )
 }
+

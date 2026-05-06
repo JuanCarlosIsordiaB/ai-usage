@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import { useState } from "react"
 import {
@@ -63,7 +63,7 @@ interface Expediente {
 }
 
 const STATUS_STYLES: Record<ExpedienteStatus, { bg: string; text: string; dot: string }> = {
-  Activo:       { bg: "#E6EEFC", text: "#2563EB", dot: "#2563EB" },
+  Activo:       { bg: "#725a4214", text: "#725a42", dot: "#725a42" },
   Urgente:      { bg: "#FCE7EB", text: "#E11D48", dot: "#E11D48" },
   "En revisión":{ bg: "#FEF3C7", text: "#F59E0B", dot: "#F59E0B" },
   Cerrado:      { bg: "#E8F7EE", text: "#16A34A", dot: "#16A34A" },
@@ -136,21 +136,21 @@ export function Expedientes() {
 
   return (
     <div className="flex flex-col h-full overflow-auto">
-      <div className="px-6 py-5 border-b border-border flex items-center justify-between gap-4 shrink-0">
+      <div className="px-4 sm:px-6 py-4 sm:py-5 border-b border-border flex items-center justify-between gap-3 shrink-0">
         <div>
-          <h1 className="text-[20px] font-semibold text-foreground flex items-center gap-2">
+          <h1 className="text-[18px] sm:text-[20px] font-semibold text-foreground flex items-center gap-2">
             <Folder className="w-5 h-5 text-primary" />
             Expedientes
           </h1>
-          <p className="text-[13px] text-muted-foreground mt-0.5">Gestión de casos y expedientes del despacho</p>
+          <p className="hidden sm:block text-[13px] text-muted-foreground mt-0.5">Gestión de casos y expedientes del despacho</p>
         </div>
-        <Button onClick={() => setShowNew(true)} className="gap-2 shrink-0">
+        <Button onClick={() => setShowNew(true)} className="gap-2 shrink-0 text-sm">
           <Plus className="w-4 h-4" />
-          Nuevo expediente
+          <span className="hidden sm:inline">Nuevo </span>expediente
         </Button>
       </div>
 
-      <div className="px-6 py-4 grid grid-cols-2 lg:grid-cols-4 gap-4 shrink-0">
+      <div className="px-4 sm:px-6 py-4 grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 shrink-0">
         {[
           { label: "Total expedientes", value: counts.total, icon: FileText, color: "text-primary" },
           { label: "Activos", value: counts.activos, icon: Clock, color: "text-blue-600" },
@@ -169,8 +169,8 @@ export function Expedientes() {
         ))}
       </div>
 
-      <div className="px-6 pb-3 flex gap-3 shrink-0">
-        <div className="relative flex-1 max-w-md">
+      <div className="px-4 sm:px-6 pb-3 flex flex-wrap gap-3 shrink-0">
+        <div className="relative flex-1 min-w-[180px] max-w-md">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
           <Input
             placeholder="Buscar por folio, asunto o cliente..."
@@ -180,7 +180,7 @@ export function Expedientes() {
           />
         </div>
         <Select value={filterStatus} onValueChange={setFilterStatus}>
-          <SelectTrigger className="w-40">
+          <SelectTrigger className="w-36 sm:w-40">
             <Filter className="w-3.5 h-3.5 mr-1.5" />
             <SelectValue />
           </SelectTrigger>
@@ -194,37 +194,39 @@ export function Expedientes() {
         </Select>
       </div>
 
-      <div className="px-6 pb-6 flex-1 overflow-auto">
+      <div className="px-4 sm:px-6 pb-6 flex-1 overflow-auto">
         <Card>
+          <div className="overflow-x-auto">
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead>Folio</TableHead>
+                <TableHead className="hidden sm:table-cell">Folio</TableHead>
                 <TableHead>Asunto</TableHead>
-                <TableHead>Cliente</TableHead>
-                <TableHead>Tipo</TableHead>
+                <TableHead className="hidden md:table-cell">Cliente</TableHead>
+                <TableHead className="hidden lg:table-cell">Tipo</TableHead>
                 <TableHead>Estado</TableHead>
-                <TableHead>Abogado</TableHead>
-                <TableHead>Última actuación</TableHead>
+                <TableHead className="hidden md:table-cell">Abogado</TableHead>
+                <TableHead className="hidden lg:table-cell">Última actuación</TableHead>
                 <TableHead className="w-10" />
               </TableRow>
             </TableHeader>
             <TableBody>
               {filtered.map((exp) => (
                 <TableRow key={exp.id}>
-                  <TableCell className="font-mono text-[12px] text-muted-foreground">{exp.folio}</TableCell>
-                  <TableCell className="max-w-[220px]">
+                  <TableCell className="hidden sm:table-cell font-mono text-[12px] text-muted-foreground">{exp.folio}</TableCell>
+                  <TableCell className="max-w-[180px] sm:max-w-[220px]">
                     <p className="text-[13px] font-medium text-foreground truncate">{exp.asunto}</p>
+                    <p className="md:hidden text-[11px] text-muted-foreground mt-0.5 truncate">{exp.cliente}</p>
                   </TableCell>
-                  <TableCell className="text-[13px] text-muted-foreground">{exp.cliente}</TableCell>
-                  <TableCell>
+                  <TableCell className="hidden md:table-cell text-[13px] text-muted-foreground">{exp.cliente}</TableCell>
+                  <TableCell className="hidden lg:table-cell">
                     <Badge variant="outline" className="text-[11px]">{exp.tipo}</Badge>
                   </TableCell>
                   <TableCell>
                     <StatusPill status={exp.status} />
                   </TableCell>
-                  <TableCell className="text-[13px] text-muted-foreground">{exp.abogado}</TableCell>
-                  <TableCell className="text-[12px] text-muted-foreground">{exp.ultimaActuacion}</TableCell>
+                  <TableCell className="hidden md:table-cell text-[13px] text-muted-foreground">{exp.abogado}</TableCell>
+                  <TableCell className="hidden lg:table-cell text-[12px] text-muted-foreground">{exp.ultimaActuacion}</TableCell>
                   <TableCell>
                     <DropdownMenu>
                       <DropdownMenuTrigger asChild>
@@ -250,6 +252,7 @@ export function Expedientes() {
               )}
             </TableBody>
           </Table>
+          </div>
         </Card>
       </div>
 
@@ -309,3 +312,5 @@ export function Expedientes() {
     </div>
   )
 }
+
+

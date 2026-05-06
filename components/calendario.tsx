@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState } from "react"
 import { toast } from "sonner"
@@ -46,10 +46,10 @@ type Evento = {
 
 const EVENT_TYPE_CONFIG: Record<EventType, { label: string; dot: string; bg: string; text: string }> = {
   audiencia:   { label: "Audiencia",   dot: "#E11D48", bg: "#FCE7EB", text: "#E11D48" },
-  reunion:     { label: "Reunión",     dot: "#5B5BFE", bg: "#EEF0FF", text: "#5B5BFE" },
+  reunion:     { label: "Reunión",     dot: "#725a42", bg: "#725a4214", text: "#725a42" },
   vencimiento: { label: "Vencimiento", dot: "#F59E0B", bg: "#FEF3C7", text: "#F59E0B" },
   firma:       { label: "Firma",       dot: "#16A34A", bg: "#E8F7EE", text: "#16A34A" },
-  otro:        { label: "Otro",        dot: "#6B7280", bg: "#F4F5F7", text: "#6B7280" },
+  otro:        { label: "Otro",        dot: "#555555", bg: "#F5F5F5", text: "#555555" },
 }
 
 function TypePill({ type }: { type: EventType }) {
@@ -139,7 +139,7 @@ export function Calendario() {
       {/* ── Top bar ───────────────────────────────────────────────────────────── */}
       <header className="h-16 border-b border-border bg-background px-6 flex items-center justify-between shrink-0">
         <div className="flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-lg bg-[#EEF0FF] flex items-center justify-center shrink-0">
+          <div className="w-8 h-8 rounded-lg bg-[#725a4214] flex items-center justify-center shrink-0">
             <CalendarIcon className="w-4 h-4 text-primary" />
           </div>
           <div>
@@ -148,7 +148,7 @@ export function Calendario() {
           </div>
         </div>
         <Button
-          className="bg-primary text-white hover:bg-primary/90 gap-1.5 h-9 px-4 text-[13px] font-medium"
+          className="bg-[#111111] text-white hover:bg-[#333333] gap-1.5 h-9 px-4 text-[13px] font-medium"
           onClick={() => setModalOpen(true)}
         >
           <Plus className="w-4 h-4" /> Nuevo evento
@@ -174,7 +174,7 @@ export function Calendario() {
                   hasEvent: {
                     fontWeight: 700,
                     textDecoration: "underline",
-                    textDecorationColor: "#5B5BFE",
+                    textDecorationColor: "#725a42",
                     textUnderlineOffset: "3px",
                   },
                 }}
@@ -209,7 +209,7 @@ export function Calendario() {
                 <button
                   key={ev.id}
                   onClick={() => setSelectedDate(ev.date)}
-                  className="flex items-start gap-2 text-left hover:bg-[#F4F5F7] rounded-lg p-1.5 -mx-1.5 transition-colors"
+                  className="flex items-start gap-2 text-left hover:bg-[#F5F5F5] rounded-lg p-1.5 -mx-1.5 transition-colors"
                 >
                   <span className="w-2.5 h-2.5 rounded-full mt-1 shrink-0" style={{ backgroundColor: EVENT_TYPE_CONFIG[ev.type].dot }} />
                   <div className="min-w-0">
@@ -248,7 +248,7 @@ export function Calendario() {
 
           {selectedEvents.length === 0 ? (
             <div className="flex flex-col items-center justify-center py-20 text-center">
-              <div className="w-14 h-14 rounded-2xl bg-[#EEF0FF] flex items-center justify-center mb-4">
+              <div className="w-14 h-14 rounded-2xl bg-[#725a4214] flex items-center justify-center mb-4">
                 <CalendarIcon className="w-7 h-7 text-primary" />
               </div>
               <p className="text-[15px] font-medium text-foreground">Sin eventos</p>
@@ -448,3 +448,5 @@ export function Calendario() {
     </div>
   )
 }
+
+

@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState, useRef, useEffect } from "react"
 import { Button } from "@/components/ui/button"
@@ -65,7 +65,7 @@ interface Version {
 // ─── Mock data ───────────────────────────────────────────────────────────────
 
 const COLLABORATORS: Record<string, { name: string; color: string }> = {
-  MG: { name: "María González", color: "#5B5BFE" },
+  MG: { name: "María González", color: "#725a42" },
   CR: { name: "Carlos Ruiz",    color: "#10b981" },
   AM: { name: "Ana Martínez",   color: "#f97316" },
   LH: { name: "Luis Hernández", color: "#0ea5e9" },
@@ -293,12 +293,12 @@ function DocumentList({
       <div className="px-6 border-b border-border bg-background shrink-0 h-16 flex items-center">
         <div className="flex items-center justify-between w-full">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-[#EEF0FF] flex items-center justify-center">
+            <div className="w-8 h-8 rounded-lg bg-[#725a4214] flex items-center justify-center">
               <FileText className="w-4 h-4 text-primary" />
             </div>
             <h1 className="text-[22px] font-semibold text-foreground leading-none">Editor de documentos</h1>
           </div>
-          <Button className="gap-2 bg-primary text-primary-foreground hover:bg-primary/90 shrink-0">
+          <Button className="gap-2 bg-[#111111] text-white hover:bg-[#333333] shrink-0">
             <Plus className="w-4 h-4" />
             Nuevo documento
           </Button>
@@ -452,7 +452,7 @@ function DocumentEditor({
 
           <Button
             size="sm"
-            className="gap-1.5 text-xs bg-primary text-primary-foreground hover:bg-primary/90"
+            className="gap-1.5 text-xs bg-[#111111] text-white hover:bg-[#333333]"
           >
             <Save className="w-3.5 h-3.5" />
             Guardar
@@ -707,3 +707,5 @@ export function EditorDocumentos() {
 
   return <DocumentList onOpen={setSelectedDoc} />
 }
+
+

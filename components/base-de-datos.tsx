@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import { useState } from "react"
 import { Badge } from "@/components/ui/badge"
@@ -221,7 +221,7 @@ function EmptyState({ onUpload }: { onUpload: () => void }) {
           <rect x="22" y="26" width="26" height="3" rx="1.5" fill="white" />
           <rect x="22" y="36" width="20" height="3" rx="1.5" fill="white" />
           <rect x="22" y="46" width="22" height="3" rx="1.5" fill="white" />
-          <circle cx="68" cy="70" r="20" fill="#5B5BFE" />
+          <circle cx="68" cy="70" r="20" fill="#725a42" />
           <path
             d="M68 60v20M58 70h20"
             stroke="#ffffff"
@@ -239,7 +239,7 @@ function EmptyState({ onUpload }: { onUpload: () => void }) {
       </p>
       <Button
         onClick={onUpload}
-        className="gap-2 bg-primary text-primary-foreground hover:bg-primary/90"
+        className="gap-2 bg-[#111111] text-white hover:bg-[#333333]"
       >
         <Upload className="w-4 h-4" />
         Subir primer documento
@@ -319,7 +319,7 @@ function UploadModal({
             onClick={pickFile}
             className={`cursor-pointer select-none border-2 border-dashed rounded-xl p-8 text-center transition-all ${
               isDragging
-                ? "border-primary bg-[#EEF0FF] scale-[1.01]"
+                ? "border-primary bg-[#725a4214] scale-[1.01]"
                 : "border-border hover:border-primary/40 hover:bg-primary/[0.02]"
             }`}
           >
@@ -409,7 +409,7 @@ function UploadModal({
             <Button variant="outline" onClick={onClose}>
               Cancelar
             </Button>
-            <Button className="gap-2 bg-primary text-primary-foreground hover:bg-primary/90">
+            <Button className="gap-2 bg-[#111111] text-white hover:bg-[#333333]">
               <Upload className="w-4 h-4" />
               Subir documento
             </Button>
@@ -449,7 +449,7 @@ function PreviewPanel({
               <div className="flex gap-2 mt-3">
                 <Button
                   size="sm"
-                  className="gap-1.5 flex-1 bg-primary text-primary-foreground hover:bg-primary/90"
+                  className="gap-1.5 flex-1 bg-[#111111] text-white hover:bg-[#333333]"
                 >
                   <Download className="w-3.5 h-3.5" />
                   Descargar
@@ -608,7 +608,7 @@ export function BaseDeDatos() {
       <div className="px-6 border-b border-border bg-background shrink-0 h-16 flex items-center">
         <div className="flex items-center justify-between w-full">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-[#EEF0FF] flex items-center justify-center">
+            <div className="w-8 h-8 rounded-lg bg-[#725a4214] flex items-center justify-center">
               <Database className="w-4 h-4 text-primary" />
             </div>
             <h1 className="text-[22px] font-semibold text-foreground leading-none">
@@ -617,7 +617,7 @@ export function BaseDeDatos() {
           </div>
           <Button
             onClick={() => setUploadOpen(true)}
-            className="gap-2 bg-primary text-primary-foreground hover:bg-primary/90 shrink-0"
+            className="gap-2 bg-[#111111] text-white hover:bg-[#333333] shrink-0"
           >
             <Plus className="w-4 h-4" />
             Subir documento
@@ -885,3 +885,4 @@ export function BaseDeDatos() {
     </div>
   )
 }
+

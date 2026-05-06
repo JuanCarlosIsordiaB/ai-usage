@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import { useState } from "react"
 import { AlertCircle, Calendar, CheckCircle2, Clock, Filter, Plus, Folder, Bell, MoreHorizontal, AlertTriangle } from "lucide-react"
@@ -47,8 +47,8 @@ interface Vencimiento {
 const URGENCIA_STYLES: Record<Urgencia, { bg: string; text: string; dot: string; icon: typeof AlertCircle }> = {
   Hoy:          { bg: "#FCE7EB", text: "#E11D48", dot: "#E11D48", icon: AlertCircle },
   Mañana:       { bg: "#FEF3C7", text: "#F59E0B", dot: "#F59E0B", icon: AlertTriangle },
-  "Esta semana":{ bg: "#E6EEFC", text: "#2563EB", dot: "#2563EB", icon: Clock },
-  "Próximo mes":{ bg: "#F4F5F7", text: "#6B7280", dot: "#6B7280", icon: Calendar },
+  "Esta semana":{ bg: "#725a4214", text: "#725a42", dot: "#725a42", icon: Clock },
+  "Próximo mes":{ bg: "#F5F5F5", text: "#555555", dot: "#555555", icon: Calendar },
   Completado:   { bg: "#E8F7EE", text: "#16A34A", dot: "#16A34A", icon: CheckCircle2 },
 }
 
@@ -132,7 +132,7 @@ export function Vencimientos() {
         {[
           { label: "Vencen hoy", value: counts.hoy, bg: "#FCE7EB", text: "#E11D48", icon: AlertCircle },
           { label: "Mañana", value: counts.manana, bg: "#FEF3C7", text: "#F59E0B", icon: AlertTriangle },
-          { label: "Esta semana", value: counts.semana, bg: "#E6EEFC", text: "#2563EB", icon: Clock },
+          { label: "Esta semana", value: counts.semana, bg: "#725a4214", text: "#725a42", icon: Clock },
           { label: "Completados", value: counts.completados, bg: "#E8F7EE", text: "#16A34A", icon: CheckCircle2 },
         ].map((s) => (
           <Card key={s.label}>
@@ -288,3 +288,5 @@ export function Vencimientos() {
     </div>
   )
 }
+
+

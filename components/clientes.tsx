@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import { useState } from "react"
 import {
@@ -118,21 +118,21 @@ export function Clientes() {
 
   return (
     <div className="flex flex-col h-full overflow-auto">
-      <div className="px-6 py-5 border-b border-border flex items-center justify-between gap-4 shrink-0">
+      <div className="px-4 sm:px-6 py-4 sm:py-5 border-b border-border flex items-center justify-between gap-3 shrink-0">
         <div>
-          <h1 className="text-[20px] font-semibold text-foreground flex items-center gap-2">
+          <h1 className="text-[18px] sm:text-[20px] font-semibold text-foreground flex items-center gap-2">
             <Users className="w-5 h-5 text-primary" />
             Clientes
           </h1>
-          <p className="text-[13px] text-muted-foreground mt-0.5">Directorio y gestión de clientes del despacho</p>
+          <p className="hidden sm:block text-[13px] text-muted-foreground mt-0.5">Directorio y gestión de clientes del despacho</p>
         </div>
-        <Button onClick={() => setShowNew(true)} className="gap-2 shrink-0">
+        <Button onClick={() => setShowNew(true)} className="gap-2 shrink-0 text-sm">
           <Plus className="w-4 h-4" />
-          Nuevo cliente
+          <span className="hidden sm:inline">Nuevo </span>cliente
         </Button>
       </div>
 
-      <div className="px-6 py-4 grid grid-cols-2 lg:grid-cols-4 gap-4 shrink-0">
+      <div className="px-4 sm:px-6 py-4 grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 shrink-0">
         {[
           { label: "Total clientes", value: counts.total, icon: Users, color: "text-primary" },
           { label: "Activos", value: counts.activos, icon: User, color: "text-green-600" },
@@ -151,8 +151,8 @@ export function Clientes() {
         ))}
       </div>
 
-      <div className="px-6 pb-3 flex gap-3 shrink-0">
-        <div className="relative flex-1 max-w-md">
+      <div className="px-4 sm:px-6 pb-3 flex flex-wrap gap-3 shrink-0">
+        <div className="relative flex-1 min-w-[180px] max-w-md">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
           <Input
             placeholder="Buscar por nombre, RFC o correo..."
@@ -162,7 +162,7 @@ export function Clientes() {
           />
         </div>
         <Select value={filterTipo} onValueChange={setFilterTipo}>
-          <SelectTrigger className="w-44">
+          <SelectTrigger className="w-36 sm:w-44">
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
@@ -173,18 +173,19 @@ export function Clientes() {
         </Select>
       </div>
 
-      <div className="px-6 pb-6 flex-1 overflow-auto">
+      <div className="px-4 sm:px-6 pb-6 flex-1 overflow-auto">
         <Card>
+          <div className="overflow-x-auto">
           <Table>
             <TableHeader>
               <TableRow>
                 <TableHead>Cliente</TableHead>
-                <TableHead>RFC</TableHead>
-                <TableHead>Tipo</TableHead>
-                <TableHead>Contacto</TableHead>
-                <TableHead>Expedientes</TableHead>
-                <TableHead>Abogado</TableHead>
-                <TableHead>Cliente desde</TableHead>
+                <TableHead className="hidden sm:table-cell">RFC</TableHead>
+                <TableHead className="hidden md:table-cell">Tipo</TableHead>
+                <TableHead className="hidden lg:table-cell">Contacto</TableHead>
+                <TableHead className="hidden md:table-cell">Expedientes</TableHead>
+                <TableHead className="hidden lg:table-cell">Abogado</TableHead>
+                <TableHead className="hidden lg:table-cell">Cliente desde</TableHead>
                 <TableHead>Estado</TableHead>
                 <TableHead className="w-10" />
               </TableRow>
@@ -197,20 +198,23 @@ export function Clientes() {
                       <div className="w-7 h-7 rounded-full bg-primary/10 flex items-center justify-center text-[11px] font-semibold text-primary shrink-0">
                         {c.nombre.charAt(0)}
                       </div>
-                      <span className="text-[13px] font-medium text-foreground max-w-[180px] truncate">
-                        {c.nombre}
-                      </span>
-                      {c.vip && <Star className="w-3 h-3 text-yellow-500 fill-yellow-500 shrink-0" />}
+                      <div className="min-w-0">
+                        <span className="text-[13px] font-medium text-foreground max-w-[160px] truncate block">
+                          {c.nombre}
+                          {c.vip && <Star className="w-3 h-3 text-yellow-500 fill-yellow-500 inline ml-1 shrink-0" />}
+                        </span>
+                        <span className="sm:hidden text-[11px] text-muted-foreground font-mono">{c.rfc}</span>
+                      </div>
                     </div>
                   </TableCell>
-                  <TableCell className="font-mono text-[12px] text-muted-foreground">{c.rfc}</TableCell>
-                  <TableCell>
+                  <TableCell className="hidden sm:table-cell font-mono text-[12px] text-muted-foreground">{c.rfc}</TableCell>
+                  <TableCell className="hidden md:table-cell">
                     <Badge variant="outline" className="text-[11px] gap-1">
                       {c.tipo === "Persona física" ? <User className="w-3 h-3" /> : <Building2 className="w-3 h-3" />}
                       {c.tipo}
                     </Badge>
                   </TableCell>
-                  <TableCell>
+                  <TableCell className="hidden lg:table-cell">
                     <div className="space-y-0.5">
                       <p className="text-[12px] text-muted-foreground flex items-center gap-1">
                         <Mail className="w-3 h-3" />{c.email}
@@ -220,21 +224,21 @@ export function Clientes() {
                       </p>
                     </div>
                   </TableCell>
-                  <TableCell>
+                  <TableCell className="hidden md:table-cell">
                     <span className="flex items-center gap-1 text-[13px] text-muted-foreground">
                       <Folder className="w-3.5 h-3.5" />{c.expedientes}
                     </span>
                   </TableCell>
-                  <TableCell className="text-[13px] text-muted-foreground">{c.abogado}</TableCell>
-                  <TableCell className="text-[13px] text-muted-foreground">{c.desde}</TableCell>
+                  <TableCell className="hidden lg:table-cell text-[13px] text-muted-foreground">{c.abogado}</TableCell>
+                  <TableCell className="hidden lg:table-cell text-[13px] text-muted-foreground">{c.desde}</TableCell>
                   <TableCell>
                     <span
                       className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-medium"
                       style={c.estado === "Activo"
                         ? { backgroundColor: "#E8F7EE", color: "#16A34A" }
-                        : { backgroundColor: "#F4F5F7", color: "#6B7280" }}
+                        : { backgroundColor: "#F5F5F5", color: "#555555" }}
                     >
-                      <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: c.estado === "Activo" ? "#16A34A" : "#6B7280" }} />
+                      <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: c.estado === "Activo" ? "#16A34A" : "#555555" }} />
                       {c.estado}
                     </span>
                   </TableCell>
@@ -263,6 +267,7 @@ export function Clientes() {
               )}
             </TableBody>
           </Table>
+          </div>
         </Card>
       </div>
 
@@ -310,3 +315,5 @@ export function Clientes() {
     </div>
   )
 }
+
+
