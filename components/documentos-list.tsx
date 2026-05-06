@@ -182,9 +182,6 @@ export function DocumentosList({ onOpen }: DocumentosListProps) {
         {/* Top bar */}
         <div className="px-6 h-16 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 bg-[#725a4214] rounded-lg flex items-center justify-center">
-              <FileText className="w-4 h-4 text-primary" />
-            </div>
             <h1 className="text-[22px] font-semibold text-foreground leading-none">Documentos</h1>
           </div>
           <Button className="bg-[#111111] text-white hover:bg-[#333333] gap-2">

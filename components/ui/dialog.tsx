@@ -51,7 +51,7 @@ function DialogContent({
         className={cn(
           "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95",
           "fixed top-[50%] left-[50%] z-50 w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] sm:max-w-lg",
-          "bg-white rounded-[20px] border border-[#EAEAEA] overflow-hidden",
+          "bg-white rounded-xl border border-[#EAEAEA] overflow-hidden",
           "shadow-[0_25px_50px_-12px_rgba(0,0,0,0.15)] duration-200",
           "flex flex-col",
           className,

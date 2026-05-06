@@ -190,8 +190,8 @@ export function Dashboard() {
                 border: "1px solid var(--border-default)",
               }}
               onFocus={e => {
-                e.currentTarget.style.borderColor = "var(--color-teal)"
-                e.currentTarget.style.boxShadow = "0 0 0 3px var(--color-teal-light)"
+                e.currentTarget.style.borderColor = "#725a42"
+                e.currentTarget.style.boxShadow = "0 0 0 3px #725a4214"
               }}
               onBlur={e => {
                 e.currentTarget.style.borderColor = "var(--border-default)"
@@ -207,7 +207,7 @@ export function Dashboard() {
           </button>
           <button
             className="w-9 h-9 rounded-full flex items-center justify-center text-[12px] font-semibold transition-colors"
-            style={{ background: "var(--color-teal-light)", color: "var(--color-teal)" }}
+            style={{ background: "#725a4214", color: "#725a42" }}
           >
             MG
           </button>
@@ -221,9 +221,7 @@ export function Dashboard() {
         <Card className="border-border bg-card">
           <CardHeader className="pb-4">
             <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-lg bg-[var(--color-teal-light)] flex items-center justify-center shrink-0">
-                <Calendar className="w-4 h-4 text-[var(--color-teal)]" />
-              </div>
+              <Calendar className="w-4 h-4 text-muted-foreground shrink-0" />
               <div>
                 <CardTitle className="text-[18px] font-semibold text-foreground leading-none">Calendario</CardTitle>
                 <CardDescription className="text-[13px] mt-0.5">Agenda y citas programadas</CardDescription>
@@ -256,7 +254,7 @@ export function Dashboard() {
                 </div>
               ))}
             </div>
-            <button className="mt-4 w-full text-[13px] text-[var(--color-teal)] hover:text-[var(--color-teal)]/80 flex items-center justify-center gap-1 py-1 transition-colors">
+            <button className="mt-4 w-full text-[13px] text-muted-foreground hover:text-foreground flex items-center justify-center gap-1 py-1 transition-colors">
               Abrir calendario completo <ChevronRight className="w-3.5 h-3.5" />
             </button>
           </CardContent>
@@ -338,9 +336,7 @@ export function Dashboard() {
           <Card className="border-border bg-card">
             <CardHeader className="pb-3">
               <div className="flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded-lg bg-[var(--color-teal-light)] flex items-center justify-center shrink-0">
-                  <Folder className="w-4 h-4 text-[var(--color-teal)]" />
-                </div>
+                <Folder className="w-4 h-4 text-muted-foreground shrink-0" />
                 <div>
                   <CardTitle className="text-[15px] font-semibold text-foreground">Expedientes</CardTitle>
                   <CardDescription className="text-[12px]">Gestión de expedientes activos</CardDescription>
@@ -362,7 +358,7 @@ export function Dashboard() {
                 </div>
                 <StatusPill status="revision" />
               </div>
-              <button className="w-full text-[13px] text-[var(--color-teal)] hover:text-[var(--color-teal)]/80 flex items-center justify-center gap-1 pt-1 transition-colors">
+              <button className="w-full text-[13px] text-muted-foreground hover:text-foreground flex items-center justify-center gap-1 pt-1 transition-colors">
                 Ver todos los expedientes <ChevronRight className="w-3.5 h-3.5" />
               </button>
             </CardContent>
@@ -392,7 +388,7 @@ export function Dashboard() {
                   <p className="text-[12px] text-muted-foreground mt-0.5">{item.meta}</p>
                 </div>
               ))}
-              <button className="w-full text-[13px] text-[var(--color-teal)] hover:text-[var(--color-teal)]/80 flex items-center justify-center gap-1 pt-1 transition-colors">
+              <button className="w-full text-[13px] text-muted-foreground hover:text-foreground flex items-center justify-center gap-1 pt-1 transition-colors">
                 Ver todas las noticias <ChevronRight className="w-3.5 h-3.5" />
               </button>
             </CardContent>
@@ -433,7 +429,7 @@ export function Dashboard() {
                 </div>
                 <StatusPill status="3dias" />
               </div>
-              <button className="w-full text-[13px] text-[var(--color-teal)] hover:text-[var(--color-teal)]/80 flex items-center justify-center gap-1 pt-1 transition-colors">
+              <button className="w-full text-[13px] text-muted-foreground hover:text-foreground flex items-center justify-center gap-1 pt-1 transition-colors">
                 Ver calendario completo <ChevronRight className="w-3.5 h-3.5" />
               </button>
             </CardContent>
@@ -464,7 +460,7 @@ export function Dashboard() {
                   <p className="text-[11px] text-[#888888] mt-0.5">Por: {item.autor}</p>
                 </div>
               ))}
-              <button className="w-full text-[13px] text-[var(--color-teal)] hover:text-[var(--color-teal)]/80 flex items-center justify-center gap-1 pt-1 transition-colors">
+              <button className="w-full text-[13px] text-muted-foreground hover:text-foreground flex items-center justify-center gap-1 pt-1 transition-colors">
                 Ver chat interno <ChevronRight className="w-3.5 h-3.5" />
               </button>
             </CardContent>
@@ -474,9 +470,7 @@ export function Dashboard() {
           <Card className="border-border bg-card">
             <CardHeader className="pb-3">
               <div className="flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded-lg bg-[var(--color-teal-light)] flex items-center justify-center shrink-0">
-                  <Scale className="w-4 h-4 text-[var(--color-teal)]" />
-                </div>
+                <Scale className="w-4 h-4 text-muted-foreground shrink-0" />
                 <div>
                   <CardTitle className="text-[15px] font-semibold text-foreground">Acuerdos del día</CardTitle>
                   <CardDescription className="text-[12px]">Resoluciones judiciales encontradas</CardDescription>
@@ -506,7 +500,7 @@ export function Dashboard() {
                   <CheckCircle2 className="w-3 h-3" /> Audiencia añadida al calendario
                 </p>
               </div>
-              <button className="w-full text-[13px] text-[var(--color-teal)] hover:text-[var(--color-teal)]/80 flex items-center justify-center gap-1 pt-1 transition-colors">
+              <button className="w-full text-[13px] text-muted-foreground hover:text-foreground flex items-center justify-center gap-1 pt-1 transition-colors">
                 Ver todos los acuerdos <ChevronRight className="w-3.5 h-3.5" />
               </button>
             </CardContent>
@@ -527,8 +521,8 @@ export function Dashboard() {
           <CardContent className="space-y-2">
             <div className="flex items-center justify-between p-4 border border-border rounded-lg hover:bg-[var(--bg-slate-50)] transition-colors">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-lg bg-[var(--color-teal-light)] flex items-center justify-center shrink-0">
-                  <Folder className="w-5 h-5 text-[var(--color-teal)]" />
+                <div className="w-10 h-10 rounded-lg bg-[#F5F5F5] flex items-center justify-center shrink-0">
+                  <Folder className="w-5 h-5 text-[#555555]" />
                 </div>
                 <div>
                   <p className="text-[14px] font-semibold text-foreground">Demanda laboral — Tech Corp</p>

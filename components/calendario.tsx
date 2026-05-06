@@ -138,14 +138,9 @@ export function Calendario() {
 
       {/* ── Top bar ───────────────────────────────────────────────────────────── */}
       <header className="h-16 border-b border-border bg-background px-6 flex items-center justify-between shrink-0">
-        <div className="flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-lg bg-[#725a4214] flex items-center justify-center shrink-0">
-            <CalendarIcon className="w-4 h-4 text-primary" />
-          </div>
-          <div>
-            <h1 className="text-[18px] font-semibold text-foreground leading-none">Calendario</h1>
-            <p className="text-[12px] text-muted-foreground mt-0.5">Agenda y citas programadas</p>
-          </div>
+        <div>
+          <h1 className="text-[18px] font-semibold text-foreground leading-none">Calendario</h1>
+          <p className="text-[12px] text-muted-foreground mt-0.5">Agenda y citas programadas</p>
         </div>
         <Button
           className="bg-[#111111] text-white hover:bg-[#333333] gap-1.5 h-9 px-4 text-[13px] font-medium"
@@ -248,8 +243,8 @@ export function Calendario() {
 
           {selectedEvents.length === 0 ? (
             <div className="flex flex-col items-center justify-center py-20 text-center">
-              <div className="w-14 h-14 rounded-2xl bg-[#725a4214] flex items-center justify-center mb-4">
-                <CalendarIcon className="w-7 h-7 text-primary" />
+              <div className="w-14 h-14 rounded-2xl bg-[#F5F5F5] flex items-center justify-center mb-4">
+                <CalendarIcon className="w-7 h-7 text-[#CCCCCC]" />
               </div>
               <p className="text-[15px] font-medium text-foreground">Sin eventos</p>
               <p className="text-[13px] text-muted-foreground mt-1 max-w-xs">

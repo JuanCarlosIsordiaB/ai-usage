@@ -7,7 +7,6 @@ import { Switch } from "@/components/ui/switch"
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter, DialogBody } from "@/components/ui/dialog"
 import { Label } from "@/components/ui/label"
 import {
-  Building2,
   Users,
   Shield,
   FileText,
@@ -376,14 +375,9 @@ export function Despacho() {
 
       {/* Header */}
       <header className="h-16 border-b border-[#EAEAEA] bg-white px-6 flex items-center justify-between shrink-0">
-        <div className="flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-lg bg-[#725a4214] flex items-center justify-center shrink-0">
-            <Building2 className="w-4 h-4 text-[#725a42]" />
-          </div>
-          <div>
-            <h1 className="text-[18px] font-semibold text-[#111111] leading-none">Despacho</h1>
-            <p className="text-[12px] text-[#888888] mt-0.5">Gestión de usuarios y permisos</p>
-          </div>
+        <div>
+          <h1 className="text-[18px] font-semibold text-[#111111] leading-none">Despacho</h1>
+          <p className="text-[12px] text-[#888888] mt-0.5">Gestión de usuarios y permisos</p>
         </div>
         <Button className="bg-[#111111] text-white hover:bg-[#333333] gap-1.5 h-9 px-4 text-[13px]">
           <UserPlus className="w-4 h-4" />

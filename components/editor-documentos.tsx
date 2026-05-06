@@ -293,9 +293,6 @@ function DocumentList({
       <div className="px-6 border-b border-border bg-background shrink-0 h-16 flex items-center">
         <div className="flex items-center justify-between w-full">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-[#725a4214] flex items-center justify-center">
-              <FileText className="w-4 h-4 text-primary" />
-            </div>
             <h1 className="text-[22px] font-semibold text-foreground leading-none">Editor de documentos</h1>
           </div>
           <Button className="gap-2 bg-[#111111] text-white hover:bg-[#333333] shrink-0">

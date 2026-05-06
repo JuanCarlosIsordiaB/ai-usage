@@ -32,7 +32,6 @@ import {
   Download,
   Trash2,
   FileText,
-  Database,
   CloudUpload,
   Gavel,
   File,
@@ -608,9 +607,6 @@ export function BaseDeDatos() {
       <div className="px-6 border-b border-border bg-background shrink-0 h-16 flex items-center">
         <div className="flex items-center justify-between w-full">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-[#725a4214] flex items-center justify-center">
-              <Database className="w-4 h-4 text-primary" />
-            </div>
             <h1 className="text-[22px] font-semibold text-foreground leading-none">
               Base de datos
             </h1>

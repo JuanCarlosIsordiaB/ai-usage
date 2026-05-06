@@ -10,9 +10,9 @@ const badgeVariants = cva(
     variants: {
       variant: {
         default:
-          'bg-[var(--color-teal-light)] text-[var(--color-teal)]',
+          'bg-[#725a4214] text-[#725a42]',
         primary:
-          'bg-[var(--color-teal-light)] text-[var(--color-teal)]',
+          'bg-[#725a4214] text-[#725a42]',
         success:
           'bg-[#ECFDF5] text-[#065F46]',
         danger:
